@@ -1,3 +1,9 @@
+##
+Start GraphQL console:
+```shell
+$ hasura api-console
+```
+
 This is a simple guide to deploying a basic create-react-app and a simple Node server(Express) on Hasura with zero configuration. Moreover, the guide also explores the various Hasura backend components which you can leverage to develop your application.
 
 ## Pre-requisites
