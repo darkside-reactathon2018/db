@@ -1,0 +1,16 @@
+{
+    "users": [
+      {
+        "user_id": 1,
+        "username": "Cbelle",
+        "firstname": "Clarabelle",
+        "lastname": "Cheng-Yue"
+      },
+      {
+        "user_id": 2,
+        "username": "Cbelle2",
+        "firstname": "Clarabelle",
+        "lastname": "Cheng-Yue"
+      }
+    ]
+  }
