@@ -19,10 +19,23 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', exampleRouter);
 
-app.get('/users', () => { 
-  request.get('https://data.abut27.hasura-app.io/v1alpha1/graphql/users').on('response', (response) => {
-  console.log('status: ', response.statusCode);
-}); });
+app.get('/users', () => {
+  request.headers({
+    'content-type': 'application/json',
+    'authorization': 'Bearer 3bbe89c0a2a6844f60a5dfd3aaf4b7dae2cf3aa96fc4f436'
+  });
+  request.body({
+    "type" : "select",
+    "args" : {
+        "table" : "users",
+        "columns": ["id", "username", "firstname", "lastname", "gender"]
+    }
+  });
+  request.post('https://data.abut27.hasura-app.io/v1/query').on('response', response => {
+    console.log('status: ', response.statusCode);
+    console.log('res:', response);
+  });
+});
 
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
