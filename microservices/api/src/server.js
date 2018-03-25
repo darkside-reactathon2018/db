@@ -4,11 +4,27 @@ var request = require('request');
 var router = express.Router();
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var server = require('http').Server(app);
+var io = require('socket.io').listen(server);
 require('request-debug')(request);
 
-var exampleRouter = require('./routeExample');
+io.on('connection', function(socket){
+  socket.on('user:request', function(msg) {
+    socket.emit('user:accept', { id : 1 });
+    socket.broadcast.emit('user:join');
+  });
 
-var server = require('http').Server(app);
+  socket.on('send:message', function(msg) {
+    io.emit('send:message', msg);
+  });
+
+  socket.on('disconnect', function(msg) {
+    socket.broadcast.emit('user:left', msg);
+  })
+});
+
+
+var exampleRouter = require('./routeExample');
 
 router.use(morgan('dev'));
 
@@ -19,6 +35,6 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', exampleRouter);
 
-app.listen(8080, function () {
+server.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
