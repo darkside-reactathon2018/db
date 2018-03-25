@@ -19,6 +19,11 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', exampleRouter);
 
+app.get('/users', () => { 
+  request.get('https://data.abut27.hasura-app.io/v1alpha1/graphql/users').on('response', (response) => {
+  console.log('status: ', response.statusCode);
+}); });
+
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
 });
