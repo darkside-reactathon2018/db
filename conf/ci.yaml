@@ -36,3 +36,12 @@ remotes:
       dockerBuild:
         dockerfilePath: microservices/api/Dockerfile
         contextPath: microservices/api
+
+  - containers:
+    - dockerBuild:
+        contextPath: microservices/darkside
+        dockerfilePath: microservices/darkside/Dockerfile
+      name: darkside
+    name: darkside
+    namespace: '{{ cluster.metadata.namespaces.user }}'
+
