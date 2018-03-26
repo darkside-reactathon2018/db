@@ -1,0 +1,10 @@
+- args:
+    permission:
+      columns:
+      - user2
+      - id
+      - user1
+      filter: {}
+    role: anonymous
+    table: chats
+  type: create_update_permission

@@ -1,0 +1,14 @@
+- args:
+    role: anonymous
+    table: chats
+  type: drop_select_permission
+- args:
+    permission:
+      columns:
+      - user2
+      - id
+      - user1
+      filter: {}
+    role: anonymous
+    table: chats
+  type: create_select_permission
