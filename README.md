@@ -1,3 +1,4 @@
+:w
 ##
 Start GraphQL console:
 ```shell
